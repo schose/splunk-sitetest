@@ -1,0 +1,7 @@
+.vscode
+*.pyc
+outfile*
+test.py
+.DS_Store
+*.log
+*.retry
