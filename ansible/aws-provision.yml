@@ -5,6 +5,12 @@
   hosts: localhost
   connection: local
   gather_facts: false
+  vars: 
+    dockerhosts:
+      - docker-1
+      - docker-2
+      - docker-3
+
   become: false
   
   tasks:
@@ -24,10 +30,9 @@
           to_port: 22
           cidr_ip: 0.0.0.0/0
 
-    - name: Create instance (ec2_instance)
+    - name: Create instance "{{ item }}"
       ec2_instance:
-
-        name: "docker-1"
+        name: "{{ item }}"
         key_name: "ec2-ffm-2016"
         region: "eu-central-1"
         vpc_subnet_id: "subnet-9ffcefe4"
@@ -47,10 +52,10 @@
             volume_size: 120
             iops: 5000
             delete_on_termination: true
-
         wait: true
         tags:
           Usage: dockerhost
+      with_items: "{{ dockerhosts }}"
       register: "instance_info"
 
     - debug:
