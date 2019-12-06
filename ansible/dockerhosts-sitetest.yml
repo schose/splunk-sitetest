@@ -45,6 +45,12 @@
         state: directory 
         mode: 0777
 
+    - name: create docker/data/tickets/db folder
+      file: 
+        path: /docker/data/tickets/db
+        state: directory 
+        mode: 0777
+
     - name: create git folder
       file: 
         path: /home/ubuntu/git
