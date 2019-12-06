@@ -9,49 +9,58 @@
       - ubuntu
 
   roles:
-    - geerlingguy.docker
+   - geerlingguy.docker
 
   tasks:
-    # - name: add users to docker groups
-    #   user:
-    #     name: '{{ item }}'
-    #     groups: docker
-    #     append: yes
-    #   with_items: 
-    #     - '{{ docker_admins }}'
+        
+    - name: add users to docker groups
+      user:
+        name: '{{ item }}'
+        groups: docker
+        append: yes
+      with_items: 
+        - '{{ docker_admins }}'
 
-    # - name: create docker folder
-    #   file: 
-    #     path: /docker
-    #     state: directory 
-    #     mode: 0777
-
-    # - name: create docker/compose folder
-    #   file: 
-    #     path: /docker/dockercompose
-    #     state: directory 
-    #     mode: 0777
-  
-    # - name: create docker/data folder
-    #   file: 
-    #     path: /docker/data
-    #     state: directory 
-    #     mode: 0777
-
-    # - name: create docker/data/tickets folder
-    #   file: 
-    #     path: /docker/data/tickets
-    #     state: directory 
-    #     mode: 0777
-
-    - name: create git folder
+    - name: create docker folder
       file: 
-        path: /home/ubuntu/git1
+        path: /docker
         state: directory 
         mode: 0777
 
-# Example read-write git checkout from github
+    - name: create docker/compose folder
+      file: 
+        path: /docker/dockercompose
+        state: directory 
+        mode: 0777
+  
+    - name: create docker/data folder
+      file: 
+        path: /docker/data
+        state: directory 
+        mode: 0777
+
     - name: create docker/data/tickets folder
+      file: 
+        path: /docker/data/tickets
+        state: directory 
+        mode: 0777
+
+    - name: create git folder
+      file: 
+        path: /home/ubuntu/git
+        state: directory 
+        owner: ubuntu
+        mode: 0777
+
+    - name: Update repositories cache and install python-pip package
+      apt:
+        name: python-boto3
+
+    - name: Update repositories cache and install python-pip package
+      apt:
+        name: python-dateutil
+
+    - name: clone the docker-compose directory
       git:
-        repo: git@gitlab.batchworks.de:andreas/docker.git
-        dest: /home/ubuntu/git1
+        repo: https://github.com/schose/splunk-sitetest.git
+        dest: /home/ubuntu/git/splunk-sitetest

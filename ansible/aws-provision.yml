@@ -1,0 +1,58 @@
+---
+# This playbook deploys all sub playbooks
+
+- name: apply common configuration to all nodes
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  
+  tasks:
+    - name: Create Security Group
+      ec2_group:
+
+        name: "splunk-sitetest"
+        description: "splunk-sitetest"
+        region: "eu-central-1"
+        rules:
+        - proto: tcp
+          from_port: 8001
+          to_port: 9001
+          cidr_ip: 0.0.0.0/0
+        - proto: tcp
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+
+    - name: Create instance (ec2_instance)
+      ec2_instance:
+
+        name: "docker-1"
+        key_name: "ec2-ffm-2016"
+        region: "eu-central-1"
+        vpc_subnet_id: "subnet-9ffcefe4"
+        #instance_type: t2.micro
+        instance_type: m5.2xlarge
+        security_group: "splunk-sitetest"
+        network:
+          assign_public_ip: true
+        image_id: "ami-0cc0a36f626a4fdf5"
+        user_data: |
+          #!/bin/bash
+          apt-get update && apt-get install python -y
+        volumes:
+        - device_name: /dev/sda1
+          ebs:     
+            volume_type: 'io1'
+            volume_size: 120
+            iops: 5000
+            delete_on_termination: true
+
+        wait: true
+        tags:
+          Usage: dockerhost
+      register: "instance_info"
+
+    - debug:
+        msg: "{{ instance_info }}"
+

@@ -1,0 +1,42 @@
+---
+# This playbook deploys all sub playbooks
+
+- name: apply common configuration to all nodes
+  hosts: dockerhosts
+  vars:
+    bucketfile: "tickets/tickets-subset.tar.gz"
+
+  tasks:
+
+    - name: Get list of files from S3
+      aws_s3:
+        mode: list
+        bucket: "batchworks-tickets"
+        prefix: "tickets/"
+        marker: "tickets/"
+      register: s3_bucket_items
+      become: false
+      
+    - debug: 
+        msg: "{{ s3_bucket_items }}"
+
+    - name: Download files from S3
+      aws_s3:
+        mode: get
+        bucket: "batchworks-tickets"
+        object: "{{ bucketfile }}"
+        dest: "/tmp/buckets.tar.gz"
+      become: false
+
+    - name: Extract foo.tgz into /var/lib/foo
+      unarchive:
+        remote_src: "yes"
+        src: "/tmp/buckets.tar.gz"
+        dest: /docker/data/
+
+    - name: give file permissions
+      file: 
+        path: /docker/data/tickets 
+        state: directory 
+        mode: 0777
+        recurse: yes
