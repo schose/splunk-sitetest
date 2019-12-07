@@ -1,4 +1,2 @@
 [dockerhosts]
-ec2-18-185-112-163.eu-central-1.compute.amazonaws.com
-ec2-18-195-29-116.eu-central-1.compute.amazonaws.com
-ec2-18-196-114-131.eu-central-1.compute.amazonaws.com
+docker-1.bwlab.de

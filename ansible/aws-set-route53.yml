@@ -11,7 +11,7 @@
       - docker-2
       - docker-3
     ec2_region: "eu-central-1"
-
+    route53_domain: "bwlab.de"
 
   become: false
   
@@ -21,20 +21,26 @@
       ec2_instance_facts:
         region: "{{ec2_region}}"
         filters:
-          "tag:Usage": dockerhost
+          "tag:Name": docker-*
           instance-state-name: running
       register: docker_metadata
 
-## clusterclusernode
     # - name: debug
     #   debug:
-    #     msg: "{{ idx_metadata.instances }}"
+    #     msg: "{{ docker_metadata.instances }}"
 
-    - name:  debug
-      debug:
-        msg: "{{ item.public_dns_name }}"
-
+    - name:  set dns cname records
+      route53:
+          state: present
+          zone: "{{ route53_domain }}" 
+          record: "{{ item.tags.Name }}.{{ route53_domain }}"
+          type: CNAME
+          ttl: 60
+          value:
+            - "{{ item.public_dns_name }}" 
+          wait: yes
+          overwrite: true
       with_items:
         - "{{ docker_metadata.instances }}"
-      # loop_control:
-      #   index_var: my_idx
+      loop_control:
+        index_var: my_counter  

@@ -8,7 +8,7 @@
   vars: 
     dockerhosts:
       - docker-1
-      - docker-2
+#      - docker-2
       - docker-3
 
   become: false
