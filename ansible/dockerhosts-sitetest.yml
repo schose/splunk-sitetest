@@ -71,4 +71,5 @@
       git:
         repo: https://github.com/schose/splunk-sitetest.git
         dest: /home/ubuntu/git/splunk-sitetest
+        force: true
       become: false

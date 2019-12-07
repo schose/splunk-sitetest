@@ -8,6 +8,7 @@ cd ansible
 ansible-playbook aws-provision.yml``
 
 - add public dns name to ansible/hosts file in group dockerhosts
+- optionally set dns name for your testdomain in router53..
 
 ## start installation of requirements like docker an clone the repo
 
