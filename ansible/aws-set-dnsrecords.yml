@@ -1,0 +1,40 @@
+---
+# This playbook deploys all sub playbooks
+
+- name: apply common configuration to all nodes
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars: 
+    dockerhosts:
+      - docker-1
+      - docker-2
+      - docker-3
+    ec2_region: "eu-central-1"
+
+
+  become: false
+  
+  tasks:
+
+    - name: get docker hosts information
+      ec2_instance_facts:
+        region: "{{ec2_region}}"
+        filters:
+          "tag:Usage": dockerhost
+          instance-state-name: running
+      register: docker_metadata
+
+## clusterclusernode
+    # - name: debug
+    #   debug:
+    #     msg: "{{ idx_metadata.instances }}"
+
+    - name:  debug
+      debug:
+        msg: "{{ item.public_dns_name }}"
+
+      with_items:
+        - "{{ docker_metadata.instances }}"
+      # loop_control:
+      #   index_var: my_idx

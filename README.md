@@ -20,4 +20,7 @@ ansible-playbook aws-provision.yml``
 ## run the test
 
 - ssh into ec2 instance
- ``cd git``
+ ``cd ~/git/splunk-sitetest/docker-compose``
+
+- start docker containers
+ ``docker-compose -f docker-compose-idx-2site.yml up``

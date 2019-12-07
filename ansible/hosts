@@ -1,4 +1,4 @@
 [dockerhosts]
-#ec2-18-195-27-82.eu-central-1.compute.amazonaws.com
-ec2-18-196-239-8.eu-central-1.compute.amazonaws.com
-ec2-52-59-104-126.eu-central-1.compute.amazonaws.com
+ec2-18-185-112-163.eu-central-1.compute.amazonaws.com
+ec2-18-195-29-116.eu-central-1.compute.amazonaws.com
+ec2-18-196-114-131.eu-central-1.compute.amazonaws.com

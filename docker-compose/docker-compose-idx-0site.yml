@@ -26,7 +26,7 @@ services:
     volumes:
       - /docker/dockercompose/idx1/etc:/opt/splunk/etc
       - /docker/dockercompose/idx1/var:/opt/splunk/var
-      - /docker/data/tickets/:/opt/splunk/var/lib/splunk/defaultdb/db/
+      - /docker/data/tickets/:/opt/splunk/var/lib/splunk/defaultdb/
 
     hostname: idx1
     environment:

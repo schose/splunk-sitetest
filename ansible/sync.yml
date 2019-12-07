@@ -27,39 +27,39 @@
         path: /tmp/buckets.tar.gz
       register: buckets
 
+    - name: Download files from S3
+      aws_s3:
+        mode: get
+        bucket: "batchworks-tickets"
+        object: "{{ bucketfile }}"
+        dest: "/tmp/buckets.tar.gz"
+      become: false
+      when: buckets.stat.exists == false
+
     # - name: Download files from S3
-    #   aws_s3:
-    #     mode: get
-    #     bucket: "batchworks-tickets"
-    #     object: "{{ bucketfile }}"
+    #   get_url:
+    #     url: "{{ bucketfile }}"
     #     dest: "/tmp/buckets.tar.gz"
-    #   become: false
     #   when: buckets.stat.exists == false
-
-    # # - name: Download files from S3
-    # #   get_url:
-    # #     url: "{{ bucketfile }}"
-    # #     dest: "/tmp/buckets.tar.gz"
-    # #   when: buckets.stat.exists == false
-
-    # # - name: Extract buckets.tar.gz into /var/lib/foo
-    # #   unarchive:
-    # #     remote_src: "yes"
-    # #     src: "/tmp/buckets.tar.gz"
-    # #     dest: /docker/data/
-    # #   when: buckets.stat.exists == false
 
     # - name: Extract buckets.tar.gz into /var/lib/foo
-    #   shell:
-    #     cmd: pigz -dc buckets.tar.gz | tar xf -
-    #     chdir: /tmp
+    #   unarchive:
+    #     remote_src: "yes"
+    #     src: "/tmp/buckets.tar.gz"
+    #     dest: /docker/data/
     #   when: buckets.stat.exists == false
+
+    - name: Extract buckets.tar.gz into /var/lib/foo
+      shell:
+        cmd: pigz -dc buckets.tar.gz | tar xf -
+        chdir: /tmp
+      when: buckets.stat.exists == false
 
     - name: move tickets to  buckets.tar.gz into /var/lib/foo
       shell:
         cmd: mv /tmp/tickets/* /docker/data/tickets/db
         chdir: /tmp
-    #  when: buckets.stat.exists == false
+      when: buckets.stat.exists == false
 
     - name: give file permissions
       file: 
@@ -73,4 +73,9 @@
         path: /home/ubuntu/.aws/credentials
         state: absent
 
+    - name: remove buckets file credentials
+      file:
+        path: /tmp/buckets.tar.gz
+        state: absent
+      
 #
