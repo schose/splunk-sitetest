@@ -4,9 +4,7 @@ services:
   clm:
     image: splunk/splunk:8.0
     ports:
-      - "8001:8000"
-      - "8002:8089"
-      - "12011:22"
+      - "8000:8000"
     volumes:
       - /docker/dockercompose/clm/etc:/opt/splunk/etc
       - /docker/dockercompose/clm/var:/opt/splunk/var
@@ -32,8 +30,6 @@ services:
 
   idx01:
     image: splunk/splunk:8.0
-    ports:
-      - "8011:8000"
     volumes:
       - /docker/dockercompose/idx01/etc:/opt/splunk/etc
       - /docker/dockercompose/idx01/var:/opt/splunk/var
@@ -55,8 +51,6 @@ services:
   
   idx02:
     image: splunk/splunk:8.0
-    ports:
-      - "8021:8000"
     volumes:
       - /docker/dockercompose/idx02/etc:/opt/splunk/etc
       - /docker/dockercompose/idx02/var:/opt/splunk/var
@@ -75,8 +69,6 @@ services:
 
   idx03:
     image: splunk/splunk:8.0
-    ports:
-      - "8041:8000"
     volumes:
       - /docker/dockercompose/idx03/etc:/opt/splunk/etc
       - /docker/dockercompose/idx03/var:/opt/splunk/var
@@ -95,8 +87,6 @@ services:
 
   idx11:
     image: splunk/splunk:8.0
-    ports:
-      - "8051:8000"
     volumes:
       - /docker/dockercompose/idx11/etc:/opt/splunk/etc
       - /docker/dockercompose/idx11/var:/opt/splunk/var
@@ -115,8 +105,6 @@ services:
 
   idx12:
     image: splunk/splunk:8.0
-    ports:
-      - "8061:8000"
     volumes:
       - /docker/dockercompose/idx12/etc:/opt/splunk/etc
       - /docker/dockercompose/idx12/var:/opt/splunk/var
@@ -135,8 +123,6 @@ services:
 
   idx13:
     image: splunk/splunk:8.0
-    ports:
-      - "8071:8000"
     volumes:
       - /docker/dockercompose/idx13/etc:/opt/splunk/etc
       - /docker/dockercompose/idx13/var:/opt/splunk/var
@@ -155,8 +141,6 @@ services:
 
   idx21:
     image: splunk/splunk:8.0
-    ports:
-      - "8081:8000"
     volumes:
       - /docker/dockercompose/idx21/etc:/opt/splunk/etc
       - /docker/dockercompose/idx21/var:/opt/splunk/var
@@ -174,9 +158,6 @@ services:
       - SPLUNK_LICENSE_URI
 
   idx22:
-    image: splunk/splunk:8.0
-    ports:
-      - "8091:8000"
     volumes:
       - /docker/dockercompose/idx22/etc:/opt/splunk/etc
       - /docker/dockercompose/idx22/var:/opt/splunk/var
@@ -195,8 +176,6 @@ services:
 
   idx23:
     image: splunk/splunk:8.0
-    ports:
-      - "8091:8000"
     volumes:
       - /docker/dockercompose/idx23/etc:/opt/splunk/etc
       - /docker/dockercompose/idx23/var:/opt/splunk/var
@@ -215,8 +194,6 @@ services:
 
   idx31:
     image: splunk/splunk:8.0
-    ports:
-      - "8091:8000"
     volumes:
       - /docker/dockercompose/idx31/etc:/opt/splunk/etc
       - /docker/dockercompose/idx31/var:/opt/splunk/var
@@ -235,8 +212,6 @@ services:
 
   idx32:
     image: splunk/splunk:8.0
-    ports:
-      - "8091:8000"
     volumes:
       - /docker/dockercompose/idx32/etc:/opt/splunk/etc
       - /docker/dockercompose/idx32/var:/opt/splunk/var
@@ -255,8 +230,6 @@ services:
 
   idx33:
     image: splunk/splunk:8.0
-    ports:
-      - "8091:8000"
     volumes:
       - /docker/dockercompose/idx33/etc:/opt/splunk/etc
       - /docker/dockercompose/idx33/var:/opt/splunk/var
