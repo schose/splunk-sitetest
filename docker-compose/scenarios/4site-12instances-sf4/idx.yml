@@ -236,25 +236,4 @@ services:
 
         - SPLUNK_SITE=site4
         - SPLUNK_MULTISITE_MASTER=clm
- 
-    idx12:
-        image: splunk/splunk:8.0
-        volumes:
-        - /docker/dockercompose/idx12/etc:/opt/splunk/etc
-        - /docker/dockercompose/idx12/var:/opt/splunk/var
-        
-
-        hostname: idx12
-        environment:
-        # - DEFAULTS_URL=http://splunk-defaults/default.yml
-        - SPLUNK_START_ARGS="--accept-license"
-        - SPLUNK_PASSWORD=Splunk4sidetesting
-        - SPLUNK_ROLE=splunk_indexer
-        - SPLUNK_CLUSTER_MASTER_URL=clm
-        - SPLUNK_IDXC_SECRET=mypass4splunk
-        - DEBUG=true
-        - SPLUNK_LICENSE_URI
-
-        - SPLUNK_SITE=site4
-        - SPLUNK_MULTISITE_MASTER=clm
 
