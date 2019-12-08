@@ -9,12 +9,14 @@ services:
     volumes:
       - /docker/dockercompose/clm/etc:/opt/splunk/etc
       - /docker/dockercompose/clm/var:/opt/splunk/var
+      - /home/ubuntu/git/splunk-sitetest/docker-compose/scenarios/1site-32instances-sf4/default.yml:/tmp/defaults/default.yml
     hostname: clm
     environment:
       - SPLUNK_START_ARGS=--accept-license
-      - SPLUNK_LICENSE_URI=http://localhost/splunk.lic 
+      - SPLUNK_LICENSE_URI
       - SPLUNK_PASSWORD=Splunk4sidetesting
       - SPLUNK_ROLE=splunk_cluster_master
-      - SPLUNK_INDEXER_URL=idx1,idx2,idx3
       - DEBUG=true
+      - SPLUNK_INDEXER_URL=idx01,idx02,idx03,idx04,idx05,idx06,idx07,idx08
       - SPLUNK_IDXC_SECRET=mypass4splunk
+      - SPLUNK_IDXC_SEARCH_FACTOR=4
