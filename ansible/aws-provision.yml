@@ -7,9 +7,12 @@
   gather_facts: false
   vars: 
     dockerhosts:
-      - docker-1
+#      - docker-1
 #      - docker-2
 #      - docker-3
+#      - docker-4
+     - docker-5
+     - docker-6
 
   become: false
   

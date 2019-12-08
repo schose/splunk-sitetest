@@ -1,2 +1,7 @@
 [dockerhosts]
-docker-1.bwlab.de
+#docker-1.bwlab.de
+#docker-2.bwlab.de
+#docker-3.bwlab.de
+#docker-4.bwlab.de
+docker-5.bwlab.de
+docker-6.bwlab.de

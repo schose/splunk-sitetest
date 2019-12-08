@@ -33,7 +33,7 @@ ansible-playbook aws-provision.yml``
 ``index=_internal sourcetype=splunkd *_fix_* earliest=-75m | timechart sum(*_fix_*)``
 
 ``index=_internal sourcetype=splunkd *_fix_* earliest=12/08/2019:11:00:00 latest=12/08/2019:14:00:00 
-| timechart sum(*_fix_*) 
+| timechart span=5m sum(*_fix_*) 
 | addtotals 
 | search Total>1 
 | stats earliest(_time) as et latest(_time) as lt 
