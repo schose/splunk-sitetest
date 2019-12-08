@@ -1,0 +1,20 @@
+version: '3'
+services:
+  clm:
+    image: splunk/splunk:8.0
+    ports:
+      - "8001:8000"
+      - "8002:8089"
+      - "12011:22"
+    volumes:
+      - /docker/dockercompose/clm/etc:/opt/splunk/etc
+      - /docker/dockercompose/clm/var:/opt/splunk/var
+    hostname: clm
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_LICENSE_URI=http://localhost/splunk.lic 
+      - SPLUNK_PASSWORD=Splunk4sidetesting
+      - SPLUNK_ROLE=splunk_cluster_master
+      - SPLUNK_INDEXER_URL=idx1,idx2,idx3
+      - DEBUG=true
+      - SPLUNK_IDXC_SECRET=mypass4splunk

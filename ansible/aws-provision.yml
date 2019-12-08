@@ -9,7 +9,7 @@
     dockerhosts:
       - docker-1
 #      - docker-2
-      - docker-3
+#      - docker-3
 
   become: false
   
@@ -49,7 +49,7 @@
         - device_name: /dev/sda1
           ebs:     
             volume_type: 'io1'
-            volume_size: 120
+            volume_size: 200
             iops: 5000
             delete_on_termination: true
         wait: true

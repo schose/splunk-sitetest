@@ -10,6 +10,8 @@ ansible-playbook aws-provision.yml``
 - add public dns name to ansible/hosts file in group dockerhosts
 - optionally set dns name for your testdomain in router53..
 
+``ansible-playbook aws-set-dnsrecords.yml``
+
 ## start installation of requirements like docker an clone the repo
 
 ``ansible-playbook dockerhosts-sitetest.yml``
@@ -25,3 +27,16 @@ ansible-playbook aws-provision.yml``
 
 - start docker containers
  ``docker-compose -f docker-compose-idx-2site.yml up``
+
+## interprete the result
+
+``index=_internal sourcetype=splunkd *_fix_* earliest=-75m | timechart sum(*_fix_*)``
+
+``index=_internal sourcetype=splunkd *_fix_* earliest=-75m 
+| timechart sum(*_fix_*) 
+| addtotals 
+| search Total>0 
+| stats earliest(_time) as et latest(_time) as lt 
+| eval rebuildduration = round((lt-et)/60,2)
+| convert ctime(et) as et ctime(lt)
+| rename et as earliest_time lt as latest_time``
