@@ -9,7 +9,7 @@ services:
     volumes:
       - /docker/dockercompose/clm/etc:/opt/splunk/etc
       - /docker/dockercompose/clm/var:/opt/splunk/var
-      - /home/ubuntu/git/splunk-sitetest/docker-compose/scenarios/1site-32instances-sf4/default.yml:/tmp/defaults/default.yml
+      - /home/ubuntu/git/splunk-sitetest/docker-compose/scenarios/default-1site.yml:/tmp/defaults/default.yml
     hostname: clm
     environment:
       - SPLUNK_START_ARGS=--accept-license
