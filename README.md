@@ -32,7 +32,8 @@ ansible-playbook aws-provision.yml``
 
 ``index=_internal sourcetype=splunkd *_fix_* earliest=-75m | timechart sum(*_fix_*)``
 
-``index=_internal sourcetype=splunkd *_fix_* earliest=12/08/2019:11:00:00 latest=12/08/2019:14:00:00 
+- get the rebuild time
+``index=_internal sourcetype=splunkd *_fix_* 
 | timechart span=5m sum(*_fix_*) 
 | addtotals 
 | search Total>1 
@@ -40,3 +41,12 @@ ansible-playbook aws-provision.yml``
 | eval rebuildduration = round((lt-et)/60,2)
 | convert ctime(et) as et ctime(lt)
 | rename et as earliest_time lt as latest_time``
+
+- get a screenshot (stacked) with rebuild status
+``index=_internal sourcetype=splunkd *_fix_* 
+| timechart span=5m sum(*_fix_*) 
+``
+  
+- check buckets [(http://docker-5.bwlab.de:8001/en-US/manager/system/clustering?tab=peers)](http://docker-5.bwlab.de:8001/en-US/manager/system/clustering?tab=peers) make screenshot
+
+- documents in results.md
