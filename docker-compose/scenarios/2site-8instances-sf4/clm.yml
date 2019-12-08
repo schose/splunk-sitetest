@@ -1,0 +1,30 @@
+version: '3'
+services:
+  clm:
+    image: splunk/splunk:8.0
+    ports:
+      - "8001:8000"
+      - "8002:8089"
+      - "12011:22"
+    volumes:
+      - /docker/dockercompose/clm/etc:/opt/splunk/etc
+      - /docker/dockercompose/clm/var:/opt/splunk/var
+      - /home/ubuntu/git/splunk-sitetest/docker-compose/scenarios/default-2site.yml:/tmp/defaults/default.yml
+    hostname: clm
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_LICENSE_URI
+      - SPLUNK_PASSWORD=Splunk4sidetesting
+      - SPLUNK_ROLE=splunk_cluster_master
+      - DEBUG=true
+      - SPLUNK_INDEXER_URL=idx01,idx02,idx03,idx04
+      - SPLUNK_IDXC_SECRET=mypass4splunk
+      - SPLUNK_SITE=site1
+      - SPLUNK_ALL_SITES=site1,site2
+      - SPLUNK_MULTISITE_REPLICATION_FACTOR_ORIGIN=2,site1:2,site2:2
+      - SPLUNK_MULTISITE_REPLICATION_FACTOR_TOTAL=4
+      - SPLUNK_MULTISITE_SEARCH_FACTOR_ORIGIN=2,site1:2,site2:2
+      - SPLUNK_MULTISITE_SEARCH_FACTOR_TOTAL=4
+      - SPLUNK_MULTISITE_MASTER=clm
+      - SPLUNK_MULTISITE_MASTER_PORT=8089
+

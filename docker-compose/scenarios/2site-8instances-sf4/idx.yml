@@ -1,0 +1,176 @@
+
+version: '3'
+services:
+
+ 
+    idx01:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx01/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx01/var:/opt/splunk/var
+        
+
+        - /docker/data/tickets/:/opt/splunk/var/lib/splunk/defaultdb/
+            
+
+        hostname: idx01
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site1
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx02:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx02/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx02/var:/opt/splunk/var
+        
+
+        hostname: idx02
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site1
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx03:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx03/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx03/var:/opt/splunk/var
+        
+
+        hostname: idx03
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site1
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx04:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx04/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx04/var:/opt/splunk/var
+        
+
+        hostname: idx04
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site1
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx05:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx05/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx05/var:/opt/splunk/var
+        
+
+        hostname: idx05
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site2
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx06:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx06/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx06/var:/opt/splunk/var
+        
+
+        hostname: idx06
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site2
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx07:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx07/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx07/var:/opt/splunk/var
+        
+
+        hostname: idx07
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site2
+        - SPLUNK_MULTISITE_MASTER=clm
+ 
+    idx08:
+        image: splunk/splunk:8.0
+        volumes:
+        - /docker/dockercompose/idx08/etc:/opt/splunk/etc
+        - /docker/dockercompose/idx08/var:/opt/splunk/var
+        
+
+        hostname: idx08
+        environment:
+        # - DEFAULTS_URL=http://splunk-defaults/default.yml
+        - SPLUNK_START_ARGS="--accept-license"
+        - SPLUNK_PASSWORD=Splunk4sidetesting
+        - SPLUNK_ROLE=splunk_indexer
+        - SPLUNK_CLUSTER_MASTER_URL=clm
+        - SPLUNK_IDXC_SECRET=mypass4splunk
+        - DEBUG=true
+        - SPLUNK_LICENSE_URI
+
+        - SPLUNK_SITE=site2
+        - SPLUNK_MULTISITE_MASTER=clm
+

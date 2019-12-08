@@ -1,0 +1,10 @@
+---
+splunk:
+   idxc:
+        search_factor: 4
+        replication_factor: 4
+
+   multisite_replication_factor_origin: 1,site1:1,site2:1,site3:1,site4:1
+   multisite_replication_factor_total: 4
+   multisite_search_factor_origin: 4
+   multisite_search_factor_total: 1,site1:1,site2:1,site3:1,site4:1
