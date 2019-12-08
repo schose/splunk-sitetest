@@ -6,7 +6,7 @@ services:
 """
 
 
-for n in range(1,13):
+for n in range(1,33):
         i = n
         if n < 10:
             n = str("0") + str(n)
@@ -33,15 +33,15 @@ for n in range(1,13):
         - DEBUG=true
         - SPLUNK_LICENSE_URI
 """
-        if i < 4:
+        if i < 9:
             print "        - SPLUNK_SITE=site1"
             print "        - SPLUNK_MULTISITE_MASTER=clm"
-        elif(i >= 4 and i <= 6) : 
+        elif(i >= 9 and i <= 16) : 
             print "        - SPLUNK_SITE=site2"
             print "        - SPLUNK_MULTISITE_MASTER=clm"
-        elif(i >= 7 and i <= 9) : 
+        elif(i >= 17 and i <= 24) : 
             print "        - SPLUNK_SITE=site3"
             print "        - SPLUNK_MULTISITE_MASTER=clm"
-        elif(i >= 10 and i <= 12) : 
+        elif(i >= 25 and i <= 32) : 
             print "        - SPLUNK_SITE=site4"
             print "        - SPLUNK_MULTISITE_MASTER=clm"
