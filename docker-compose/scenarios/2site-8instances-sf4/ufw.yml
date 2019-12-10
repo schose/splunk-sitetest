@@ -9,3 +9,4 @@ services:
       - SPLUNK_INDEXER="idx01:9997"
       - SPLUNK_CLUSTER_MASTER_URL=clm
       - SPLUNK_SHC_SECRET=shc4splunk
+      - SPLUNK_ADD_MONITOR="udp 1514 -sourcetype syslog -index summary"

@@ -1,0 +1,11 @@
+version: '3'
+services:
+  loggen1:
+    image: schose/sysgen:latest
+    hostname: loggen
+    environment:
+      - SYSGEN_TARGET=ufw1
+      - SYSGEN_PORT=1541
+      - SYSGEN_RATE=10000
+      - SYSGEN_TIME=400
+
