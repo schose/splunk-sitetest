@@ -1,0 +1,11 @@
+version: '3'
+services:
+  ufw1:
+    image: splunk/universalforwarder:7.3.3
+    hostname: ufw1
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=Splunk4sidetesting
+      - SPLUNK_INDEXER="idx01:9997"
+      - SPLUNK_CLUSTER_MASTER_URL=clm
+      - SPLUNK_SHC_SECRET=shc4splunk
