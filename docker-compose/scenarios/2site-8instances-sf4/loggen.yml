@@ -6,6 +6,6 @@ services:
     environment:
       - SYSGEN_TARGET=ufw1
       - SYSGEN_PORT=1514
-      - SYSGEN_RATE=10000
-      - SYSGEN_TIME=400
+      - SYSGEN_RATE=1000000
+      - SYSGEN_TIME=90000
 

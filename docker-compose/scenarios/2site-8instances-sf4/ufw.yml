@@ -3,6 +3,8 @@ services:
   ufw1:
     image: splunk/universalforwarder:7.3.3
     hostname: ufw1
+    volumes:
+        - /home/ubuntu/git/splunk-sitetest/docker-compose/scenarios/default-ufw.yml:/tmp/defaults/default.yml
     environment:
       - SPLUNK_START_ARGS=--accept-license
       - SPLUNK_PASSWORD=Splunk4sidetesting
