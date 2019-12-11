@@ -1,0 +1,8 @@
+---
+
+retry_num: 5
+splunk:
+   idxc:
+        search_factor: 4
+        replication_factor: 4
+
